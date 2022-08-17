@@ -30,6 +30,7 @@ gem 'devise'
 # 多言語対応
 gem 'rails-i18n', '~> 6.0'
 gem 'devise-i18n'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
