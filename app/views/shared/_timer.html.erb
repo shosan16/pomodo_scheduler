@@ -1,0 +1,64 @@
+時間<input id="task_time">
+<input type="button" value="Start" id="start" onclick="countDown()">
+<div id="timer">
+  <div id="hour"></div>
+  <div id="minute"></div>
+  <div id="second"></div>
+</div>
+
+<script>
+  const hours   = document.getElementById("hour");
+  const minutes = document.getElementById("minute");
+  const seconds = document.getElementById("second");
+  var taskTime;
+  var startTime;
+  var finishTime;
+
+  function countDown() {
+    setTimer();
+    setInterval(display,100);
+    var tid = setInterval(function(){
+                            display();
+                          }, 100);
+  }
+
+  function setTimer() {
+    startTime = new Date();
+    taskTime = document.getElementById("task_time").value;
+    finishTime = startTime.setMinutes(startTime.getMinutes() + Number(taskTime));
+  }
+
+    function display() {
+    const now = new Date();
+    let diff_sec = Math.floor((finishTime - now)/1000);
+    minus_check(diff_sec);
+    
+    hour = Math.floor(diff_sec / 3600);
+    diff_sec -= hour * 3600;
+    hours.innerHTML = format(hour);
+
+    minute = Math.floor(diff_sec / 60);
+    diff_sec -= minute * 60;
+    minutes.innerHTML = format(minute);
+
+    second = Math.floor(diff_sec);
+    seconds.innerHTML = format(second);
+  }
+
+  function minus_check(num) {
+    if (num < 0) {
+      clearInterval(tid);
+    }
+  }
+
+  function format(num) {
+    let display_num;
+    
+    if (num < 10) {
+      display_num = "0"+num;
+    } else {
+      display_num = num;
+    }
+    return display_num;
+  }
+</script>
