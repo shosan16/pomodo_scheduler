@@ -3,8 +3,27 @@
     <%= link_to "Pomodo Scheduler", root_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %>
+          <li><%= link_to "ユーザー検索", users_path %></li>
+          <li><%= link_to "タイマー", new_task_path %></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              アカウント <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "マイページ", root_path %></li>
+              <li><%= link_to "設定", edit_user_registration_path %></li>
+              <li><%= link_to "フォローしているユーザー", following_user_path(current_user) %></li>
+              <li class="divider"></li>
+              <li>
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+              </li>
+            </ul>
+          </li>
+        <% else %>
         <li><%= link_to "ホーム",  root_path %></li>
-        <li><%= link_to "ログイン", '#' %></li>
+        <li><%= link_to "ログイン", user_session_path %></li>
+        <% end %>
       </ul>
     </nav>
   </div>
