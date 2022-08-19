@@ -7,6 +7,9 @@ ruby '2.6.9'
 gem 'rails', '~> 6.0.5'
 
 gem 'bootstrap-sass', '3.4.1'
+gem 'faker',                   '2.20.0'
+gem 'will_paginate',           '3.3.1'
+gem 'bootstrap-will_paginate', '1.0.0'
 
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
@@ -30,6 +33,7 @@ gem 'devise'
 # 多言語対応
 gem 'rails-i18n', '~> 6.0'
 gem 'devise-i18n'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
