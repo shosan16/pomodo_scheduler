@@ -1,34 +1,58 @@
-時間<input id="task_time">
-<input type="button" value="Start" id="start" onclick="countDown()">
-<div id="timer">
-  <div id="hour"></div>
-  <div id="minute"></div>
-  <div id="second"></div>
+<%= stylesheet_link_tag "timer" %>
+<input type="button" value="Start" id="start" onclick="startTasks()">
+<div class="timer">
+  <div class="container">
+    <div class="row">
+      <div id="hour" class="col-md-2 num">00</div>
+      <div class="col-md-3 unit">:</div>
+      <div id="minute" class="col-md-2 num">00</div>
+      <div class="col-md-3 unit">:</div>
+      <div id="second" class="col-md-2 num">00</div>
+    </div>
+  </div>
 </div>
 
 <script>
-  const hours   = document.getElementById("hour");
-  const minutes = document.getElementById("minute");
-  const seconds = document.getElementById("second");
+  const hours   = document.getElementById("hour");        //時を表示するエリアの変数
+  const minutes = document.getElementById("minute");      //分を表示するエリアの変数
+  const seconds = document.getElementById("second");      //秒を表示するエリアの変数
+
+  var setNumber;
   var taskTime;
+  var restTime;
+
   var startTime;
-  var finishTime;
+  var finishTime;   //タスクのカウントダウンを始める度に再代入
 
-  function countDown() {
-    setTimer();
-    setInterval(display,100);
-    var tid = setInterval(function(){
-                            display();
-                          }, 100);
+  const _sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));   //並行処理をさせないためのおまじない
+
+  async function startTasks() {
+    setNumber = Number(document.getElementById("set_number").value);
+    
+    while(setNumber > 0) {        //セット数分繰り返す
+      taskTime = Number(document.getElementById("task_time").value);
+      restTime = Number(document.getElementById("rest_time").value);
+
+      await countDown(taskTime);  //タスク時間のカウントダウン
+      await countDown(restTime);  //休憩時間のカウントダウン
+      setNumber--;
+    }
   }
 
-  function setTimer() {
+  function countDown(time) {
+    setTimer(time);
+    var tid = setInterval(function(){       //10ミリ秒の間隔でdisplayメソッドを繰り返す
+                              display();
+                            }, 10);
+    return _sleep(time*60*1000);
+  }
+
+  function setTimer(time) {
     startTime = new Date();
-    taskTime = document.getElementById("task_time").value;
-    finishTime = startTime.setMinutes(startTime.getMinutes() + Number(taskTime));
+    finishTime = startTime.setMinutes(startTime.getMinutes() + time);
   }
 
-    function display() {
+  function display() {
     const now = new Date();
     let diff_sec = Math.floor((finishTime - now)/1000);
     minus_check(diff_sec);
@@ -46,7 +70,7 @@
   }
 
   function minus_check(num) {
-    if (num < 0) {
+    if (num <= 0) {
       clearInterval(tid);
     }
   }
