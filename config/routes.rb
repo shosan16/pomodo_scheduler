@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  get 'users/index'
-  get 'tasks/new'
-  devise_for :users
-  get 'home/index'
   root 'static_pages#home'
   resources :users do
     member do
@@ -10,6 +6,11 @@ Rails.application.routes.draw do
     end
   end
   resources :relationships,       only: [:create, :destroy]
+  get 'home/index'
+
+  devise_for :users
+  resources :users
+  resources :tasks
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
