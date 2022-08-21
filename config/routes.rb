@@ -11,4 +11,5 @@ Rails.application.routes.draw do
 
   get "tasks/new", to:'tasks#new'
   post "tasks/new", to:'tasks#create'
+  get 'countdown', to:'tasks#countdown'
 end

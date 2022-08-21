@@ -6,10 +6,13 @@ class TasksController < ApplicationController
   def create
     @task = current_user.tasks.build if user_signed_in?
     if @task.save
-      redirect_to root_path
+      redirect_to countdown_path
     else
       render 'new'
     end
+  end
+
+  def countdown
   end
 
   private
