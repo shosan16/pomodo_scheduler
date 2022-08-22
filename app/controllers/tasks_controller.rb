@@ -8,14 +8,15 @@ class TasksController < ApplicationController
   def create
     @task = current_user.tasks.build(task_params)
     if @task.save
-      render 'countdown'
+      redirect_to countdown_path(task_id: @task.id)
     else
       render 'new'
     end
   end
 
   def countdown
-    if @task.nil?
+    @task = Task.find_by(id: params[:task_id])
+    if @task == nil?
       redirect_to new_task_path
     end
   end
