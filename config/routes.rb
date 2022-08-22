@@ -6,10 +6,9 @@ Rails.application.routes.draw do
       get :following, :followers
     end
   end
-  resources :relationships,       only: [:create, :destroy]
+  resources :relationships, only: [:create, :destroy]
   get 'home/index'
 
-  get "tasks/new", to:'tasks#new'
-  post "tasks/new", to:'tasks#create'
+  resources :tasks, only: [:new, :create]
   get 'countdown', to:'tasks#countdown'
 end
