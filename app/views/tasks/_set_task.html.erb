@@ -8,13 +8,13 @@
       <%= f.text_field :name %>
 
       <%= f.label :task_time, "タスク時間(分)" %>
-      <%= f.number_field :task_time, step: "1",  min:0 %>
+      <%= f.number_field :task_time, step: "1",  min: 1, max: 60 %>
 
       <%= f.label :rest_time, "休憩時間(分)" %>
-      <%= f.number_field :rest_time, step: "1" , min:0%>
+      <%= f.number_field :rest_time, step: "1" , min: 1, max: 60%>
 
       <%= f.label :set_number, "セット数（回）" %>
-      <%= f.number_field :set_number, step: "1" , min:0%>
+      <%= f.number_field :set_number, step: "1" , min: 1, max: 10%>
 
       <%= f.submit "Pomo Strat", class: "btn btn-primary" %>
     <% end %>

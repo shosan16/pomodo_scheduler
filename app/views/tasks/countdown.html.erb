@@ -1,1 +1,10 @@
-<%= @task.name %>
+<%= stylesheet_link_tag "timer" %>
+
+<div>
+  <p id="task_name"><%= @task.name %></p>
+</div>
+<div>
+  残り<p id="remaining_set_number"><%= @task.set_number %></p>セット
+</div>
+
+<%= render 'shared/timer' %>
