@@ -1,5 +1,7 @@
 <%= stylesheet_link_tag "timer" %>
 <input type="button" value="Start" id="start" onclick="startTasks()">
+残り<p id="remaining_set_number"></span>セット
+<p id="tasi_name"></p>
 <div class="timer">
   <div class="container">
     <div class="row">
@@ -13,9 +15,11 @@
 </div>
 
 <script>
-  const hours   = document.getElementById("hour");        //時を表示するエリアの変数
-  const minutes = document.getElementById("minute");      //分を表示するエリアの変数
-  const seconds = document.getElementById("second");      //秒を表示するエリアの変数
+  const taskName         = document.getElementById("taskName");
+  var remainingSetNumber = document.getElementById("remaining_set_number");
+  const hours            = document.getElementById("hour");                   //時を表示するエリアの変数
+  const minutes          = document.getElementById("minute");                 //分を表示するエリアの変数
+  const seconds          = document.getElementById("second");                 //秒を表示するエリアの変数
 
   var setNumber;
   var taskTime;
