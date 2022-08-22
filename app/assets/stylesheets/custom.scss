@@ -15,6 +15,7 @@ $gray-medium-light: #eaeaea;
 
 body {
   padding-top: 60px;
+  background-color: #F5EAD5;
 }
 
 section {
@@ -76,6 +77,20 @@ p {
     text-decoration: none;
   }
 }
+
+.navbar-inverse {
+    background-color: #FDA856;
+    border-color: #FDA856;
+    .navbar-nav {
+      li{
+        a{
+          color: #F5EAD5;
+        }
+      }
+    }
+}
+
+
 
 /* footer */
 
