@@ -1,0 +1,8 @@
+<% @user.tasks.each do |task| %>
+  <li class='tasks'>
+    <p><%= task.name %></p>
+    <p><%= task.task_time %>分</p>
+    <p><%= task.set_number %>セット</p>
+    <p>合計<%= task.task_time * task.set_number  %>分</p>
+  </li>
+<% end %>
