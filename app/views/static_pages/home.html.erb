@@ -10,7 +10,7 @@
       </aside>
       <div class="col-md-8">
         <h2>今日のタスク</h2>
-        <% if @user.tasks.any? %>
+        <% if @tasks.any? %>
           <ol class="tasks">
             <%= render 'shared/show_tasks' %>
           </ol>
