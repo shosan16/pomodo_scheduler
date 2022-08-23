@@ -10,8 +10,12 @@
       </aside>
     </div>
 <% else %>
+<%= render 'layouts/home' %>
   <div class="center jumbotron">
-     <h1>ようこそ <br>Pomodo Schedulerへ</h1>
-  <%= link_to "アカウント作成", new_user_registration_path, class: "btn btn-lg btn-primary" %>
+     <h1>こんにちは <br>Pomodo Schedulerへ</h1>
+  <%= link_to "新規作成", new_user_registration_path, class: "btn btn-lg btn-primary" %>
   </div>
 <% end %>
+
+
+
