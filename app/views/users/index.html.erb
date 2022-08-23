@@ -1,5 +1,11 @@
 <% provide(:title, 'All users') %>
-<h1>全てのユーザー</h1>
+<h1>ユーザー検索</h1>
+<%= search_form_for @q, url: search_users_path do |f| %>
+  <%= f.label :name_cont, 'ユーザー名' %>
+  <%= f.search_field :name_cont %>
+  <br>
+  <%= f.submit '検索' %>
+<% end %>
 
 <ul class="users">
   <% @users.each do |user| %>
