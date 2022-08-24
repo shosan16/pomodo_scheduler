@@ -1,11 +1,15 @@
 <% provide(:title, 'All users') %>
 <h1>ユーザー検索</h1>
-<%= search_form_for @q, url: search_users_path do |f| %>
-  <%= f.label :name_cont, 'ユーザー名' %>
-  <%= f.search_field :name_cont %>
-  <br>
-  <%= f.submit '検索' %>
-<% end %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+      <%= search_form_for @q, url: search_users_path do |f| %>
+          <%= f.label :name_cont, 'ユーザー名' %>
+          <%= f.search_field :name_cont %>
+          <%= f.submit '検索' %>
+      <% end %>
+  </div>
+</div>
+      
 
 <ul class="users">
   <% @users.each do |user| %>
@@ -19,7 +23,7 @@
         <% if current_user.following?(user) %>
           <%= form_with(model: current_user.active_relationships.find_by(followed_id: user.id),
                         html: { method: :delete }, local: true) do |f| %>
-          <%= f.submit "フォロー解除", class: "btn btn-default" %>
+          <%= f.submit "フォロー解除", class: "btn btn-secondary" %>
           <% end %>
         <% else %>
         <%= form_with(model: current_user.active_relationships.build, local: true) do |f| %>
