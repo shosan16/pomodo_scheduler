@@ -16,10 +16,10 @@
   </aside>
   <div class="col-md-8">
     <div class="m-5">
-      <%= pie_chart @user.tasks.to_a.group_by(&:name).map { |name, tasks| [name, tasks.map { |task| task.set_number * task.task_time }.sum]}%>
+      <%= pie_chart @tasks.to_a.group_by(&:name).map { |name, tasks| [name, tasks.map { |task| task.set_number * task.task_time }.sum]}%>
     </div>
     <div class="m-5">
-      <% @user.tasks.each do |task| %>
+      <% @tasks.each do |task| %>
         <li class='tasks'>
           <p><%= task.name %></p>
           <p><%= task.task_time %>分</p>
