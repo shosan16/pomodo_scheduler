@@ -1,7 +1,14 @@
+<% task_times = user.tasks.where(created_at: Time.zone.today.beginning_of_day..Time.zone.today.end_of_day).to_a.map { |task| task.set_number * task.task_time }.sum %>
+
 <li>
   <%= gravatar_for user, size: 50 %>
-  <%= link_to user.name, user %>
-  <p>
-    <%= user.tasks.where(created_at: Time.zone.today.beginning_of_day..Time.zone.today.end_of_day).to_a.map { |task| task.set_number * task.task_time }.sum %>
-  </p>
+  <%= link_to user.name, user%>
+  <% if task_times > 0 %>
+    <p>
+      <%= task_times/60 %> 時間
+      <%= ((task_times/60.to_f-task_times/60) * 60).round  %>分作業しました
+    </p>
+  <% else %>
+    <p>今日はまだ作業していません</p>
+  <% end %>
 </li>
