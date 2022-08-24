@@ -1,5 +1,3 @@
-<h2 class="m-5">今日のタスク</h2>
-
 <% if @tasks %>
   <div class="m-5">
     <%= pie_chart @tasks.to_a.group_by(&:name).map { |name, tasks| [name, tasks.map { |task| task.set_number * task.task_time }.sum]}%>
