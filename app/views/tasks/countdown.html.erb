@@ -1,9 +1,2 @@
 <%= stylesheet_link_tag "timer" %>
-<div>
-  <p id="task_name"><%= @task.name %></p>
-</div>
-<div>
-  残り<p id="remaining_set_number"><%= @task.set_number %></p>セット
-</div>
-<div id = "task_state" class="alert alert-success"></div>
 <%= render 'shared/timer' %>

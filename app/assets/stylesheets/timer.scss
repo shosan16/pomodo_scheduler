@@ -1,38 +1,75 @@
-.timer {
-  background-color: black;
-  height: 80px;
-  display: inline-block;
-  width: 500px;
-  text-align: center;
-  border-radius: 15px;
+.timer-container {
+  width: 100%;
+  margin-bottom: 50px;
 
-  .container {
-    display: inline-block;
-    height: 60px;
-    width: 90%;
+  .info-container {
     margin: 0 auto;
-    margin-top: 10px;
+    margin-top: 20px;
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(205, 183, 169);
+    color: white;
+    height: 80px;
+    border-radius: 1rem;
+
+    h1 {
+      height: 40px;
+      background-color: white;
+      font-size: 20px;
+      width: 35%;
+      color: black;
+      border-radius: 1rem;
+    }
+
+    #task-name {
+      margin-right: 10%;
+    }
+  }
+
+  .state-container {
+    margin: 0 auto;
+    margin-top: 50px;
     background-color: white;
+    width: 60%;
     text-align: center;
-    border-radius: 15px;
+    height: 40px;
+    border: solid 7px rgb(205, 183, 169);
 
-    .row {
-      width: 100%;
+    .task-state {
+      float: right;
       margin: 0 auto;
-      height: 60px;
-      text-align: center;
-      
-      .num {
-        text-align: center;
-        font-size: 40px;
-      }
+      font-weight: bold;
+    }
+  }
 
-      .unit {
-        font-size: 40px;
-      }
+  .time-container {
+    margin: 0 auto;
+    width: 80%;
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .time {
+      margin: 1%;
+      background-color: rgb(161, 91, 47);
+      border-radius: 1rem;
+      padding: 5%;
+    }
+
+    #hour,#minute,#second {
+      color: white;
+      font-size: 3rem;
+      margin-right: 1rem;
     }
   }
 }
+
 #button {
   display: none;
+  margin: 0 auto;
+  margin-top: 50px;
+  width: 60%;
 }
