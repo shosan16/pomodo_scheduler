@@ -83,6 +83,9 @@ p {
     border-color: #FDA856;
     .navbar-nav {
       li{
+        .dropdown-menu{
+          background-color: #FDA856;
+        }
         a{
           color: #F5EAD5;
         }
