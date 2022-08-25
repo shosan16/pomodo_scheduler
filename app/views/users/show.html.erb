@@ -14,4 +14,12 @@
     <%= render 'follow_form' if user_signed_in? %>
     </section>
   </aside>
+  <div class="col-md-8">
+    <% if @tasks.any? %>
+      <h2 class="m-5">今日のタスク</h2>
+      <%= render 'shared/show_tasks' %>
+    <% else %>
+      <h2 class="m-5">今日はまだ作業していません</h2>
+    <% end %>
+  </div>
 </div>

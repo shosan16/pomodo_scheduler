@@ -1,15 +1,28 @@
 <% if user_signed_in? %>
   <div class="row">
-      <div class="col-md-12">
-        <% if @tasks.any? %>
-          <ol class="tasks">
-            <%= render 'shared/show_tasks' %>
-          </ol>
-        <% else %>
-          <p>今日のタスクはありません</p>
-        <% end %>
-      </div>
+    <aside class="col-md-4">
+      <section class="user_info">
+        <h1>
+          <%= gravatar_for @user %>
+          <%= @user.name %>
+        </h1>
+      </section>
+      <section class="stats">
+        <%= render 'shared/stats' %>
+      </section>
+      <section class="button">
+      <%= render 'users/follow_form' if user_signed_in? %>
+      </section>
+    </aside>
+    <div class="col-md-8">
+      <% if @tasks.any? %>
+        <h2 class="m-5">今日のタスク</h2>
+        <%= render 'shared/show_tasks' %>
+      <% else %>
+        <h2 class="m-5">今日はまだ作業していません</h2>
+      <% end %>
     </div>
+  </div>
 <% else %>
-<%= render 'layouts/home' %>
+  <%= render 'layouts/home' %>
 <% end %>

@@ -4,10 +4,14 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @tasks = @user.tasks.where(created_at: Time.zone.today.beginning_of_day..Time.zone.today.end_of_day)
   end
 
   def index
-    @users = User.all.order(:id).paginate(page: params[:page])
+    @users = User.all.sort_by{|user| user.tasks.where(created_at: Time.zone.today.beginning_of_day..Time.zone.today.end_of_day).map{|task|task.task_time * task.set_number}.sum}.reverse.paginate(page: params[:page])
+
+    #where(created_at: Time.zone.today.beginning_of_day..Time.zone.today.end_of_day)
+    #task.task_time * task.set_number
   end
 
   def following

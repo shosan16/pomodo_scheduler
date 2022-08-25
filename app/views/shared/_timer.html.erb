@@ -1,4 +1,7 @@
 <div class="timer-container">
+  <div class="state-container">
+    <p id = "task-state"></p>
+  </div>
   <div class="time-container">
     <p class="time"><span id="hour"></span>hours</p>
     <p class="time"><span id="minute"></span>minutes</p>
@@ -7,9 +10,6 @@
   <div class="info-container">
     <h1 id="task-name"><%= @task.name %></h1>
     <h1 id="remaining-set-number">あと<%= @task.set_number %>セット</h1>
-  </div>
-  <div class="state-container">
-    <p id = "task-state"></p>
   </div>
 </div>
 
