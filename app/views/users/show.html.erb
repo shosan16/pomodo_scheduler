@@ -15,7 +15,7 @@
     </section>
     <section class="calendar">
     <%= month_calendar do |date| %>
-      <%= link_to date, user_path(date: date) %>
+      <%= link_to (date.day).to_s+"日", user_path(date: date) %>
     <% end %>
     </section>
   </aside>
