@@ -1,6 +1,6 @@
 <% task_times = user.tasks.where(created_at: Time.zone.today.beginning_of_day..Time.zone.today.end_of_day).to_a.map { |task| task.set_number * task.task_time }.sum %>
 
-<li class="foo-fonts">
+<li class="foo-font">
   <% if user.avatar.url %>
     <%= image_tag user.avatar.url, size: 50%>
   <% else %>

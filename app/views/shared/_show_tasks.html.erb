@@ -4,7 +4,7 @@
   <div>
 <% end %>
 
-<div class="m-5 foo-font">
+<div class="m-5 foo-font ">
   <% @tasks.each do |task| %>
     
     <ol class="list-group list-group-numbered tasks">
@@ -14,10 +14,7 @@
       <li class="list-group-item">合計時間：<%= task.task_time * task.set_number %>分</li>
     </ol>
 
-    <div class="balloon3-right">
-      終了
-    </div>
-    <p>完了じゃあ</p>
+    
 
   <% end %>
 </div>
