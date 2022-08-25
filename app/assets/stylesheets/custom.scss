@@ -47,7 +47,7 @@ h1 {
 }
 
 h2 {
-  font-size: 1.2em;
+  font-size: 1.7em;
   letter-spacing: -1px;
   margin-bottom: 30px;
   text-align: center;
@@ -159,7 +159,7 @@ aside {
 
 .gravatar {
   float: left;
-  margin-right: 10px;
+  margin-right: 20px;
 }
 
 .gravatar_edit {
@@ -233,6 +233,7 @@ input {
   }
 }
 
+
 .checkbox {
   margin-top: -10px;
   margin-bottom: 10px;
@@ -246,6 +247,10 @@ input {
 #session_remember_me {
   width: auto;
   margin-left: 0;
+}
+
+.field{
+  margin-bottom: 15px;
 }
 
 

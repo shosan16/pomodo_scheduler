@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :following, :followers]
+  before_action :set_q, only: [:index, :search]
+
   def show
     @user = User.find(params[:id])
   end
@@ -20,6 +22,16 @@ class UsersController < ApplicationController
     @user  = User.find(params[:id])
     @users = @user.followers.paginate(page: params[:page])
     render 'show_follow'
+  end
+
+  def search
+    @results = @q.result
+  end
+
+  private
+
+  def set_q
+    @q = User.ransack(params[:q])
   end
 
 end
