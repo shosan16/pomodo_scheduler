@@ -14,9 +14,9 @@
     <%= render 'follow_form' if user_signed_in? %>
     </section>
     <section class="calendar">
-    <%= month_calendar do |date| %>
-      <%= link_to date, user_path(date: date) %>
-    <% end %>
+      <%= month_calendar do |date| %>
+          <%= link_to (date.day).to_s+"日", user_path(date: date) %>
+      <% end %>
     </section>
   </aside>
   <div class="col-md-8">
