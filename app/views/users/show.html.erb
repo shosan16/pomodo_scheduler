@@ -1,9 +1,13 @@
 <% provide(:title, @user.name) %>
-<div class="row">
+<div class="row foo-fonts">
   <aside class="col-md-4">
     <section class="user_info">
       <h1>
-        <%= gravatar_for @user %>
+        <% if @user.avatar.url %>
+          <%= image_tag @user.avatar.url, size: 50%>
+        <% else %>
+          <%= image_tag 'default_user.png', size: 50%>
+        <% end %>
         <%= @user.name %>
       </h1>
     </section>
