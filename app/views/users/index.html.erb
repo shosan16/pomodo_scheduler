@@ -9,13 +9,17 @@
       <% end %>
   </div>
 </div>
-      
+
 
 <ul class="users">
   <% @users.each do |user| %>
     <li>
     <div class="col-md-4">
-      <%= gravatar_for user, size: 50 %>
+      <% if user.avatar.url %>
+        <%= image_tag user.avatar.url, size: 50%>
+      <% else %>
+        <%= image_tag 'default_user.png', size: 50%>
+      <% end %>
       <%= link_to user.name, user %>
     </div>
     <div class="col-md-4">
@@ -31,11 +35,10 @@
                 <%= f.submit "フォロー", class: "btn btn-primary" %>
           <% end %>
         <% end %>
-    </div>  
+    </div>
       <% end %>
     </li>
   <% end %>
 </ul>
 
 <%= will_paginate %>
-
