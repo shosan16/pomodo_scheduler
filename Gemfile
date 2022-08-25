@@ -34,9 +34,16 @@ gem 'devise'
 # 多言語対応
 gem 'rails-i18n', '~> 6.0'
 gem 'devise-i18n'
+#カレンダー機能
+gem "simple_calendar", "~> 2.0"
 
 #円グラフ
 gem "chartkick"
+
+#アイコン
+gem 'carrierwave', '~> 2.0'
+gem 'mini_magick'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
