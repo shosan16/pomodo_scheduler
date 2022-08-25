@@ -1,19 +1,20 @@
 <% provide(:title, 'All users') %>
-
-<h1>ユーザー検索</h1>
-<div class="row">
+<div class="foo-font">
+  <h1>ユーザー検索</h1>
+  <div class="row">
   <div class="col-md-6 col-md-offset-3">
       <%= search_form_for @q, url: search_users_path do |f| %>
           <%= f.label :name_cont, 'ユーザー名' %>
           <%= f.search_field :name_cont %>
           <%= f.submit '検索', class: "btn btn-primary" %>
       <% end %>
+    </div>
   </div>
 </div>
 
 
 
-<ul class="users">
+<ul class="users foo-font">
   <% @users.each.with_index(1) do |user,i| %>
     <li>
       <div class="col-md-1">
