@@ -11,32 +11,43 @@
 </div>
 
 
+
 <ul class="users">
   <% @users.each.with_index(1) do |user,i| %>
     <li>
-    <div class="col-md-1">
-    <% if (params[:page]).to_i <= 1 %>
-      <% if i == 1 %>
-        <%= image_tag 'first.png' %>
-      <% elsif i == 2 %>
-        <%= image_tag 'second.png' %>
-      <% elsif i == 3 %>
-        <%= image_tag 'third.png' %>
+      <div class="col-md-1">
+      <% if (params[:page]).to_i <= 1 %>
+        <% if i == 1 %>
+          <%= image_tag 'first.png' %>
+        <% elsif i == 2 %>
+          <%= image_tag 'second.png' %>
+        <% elsif i == 3 %>
+          <%= image_tag 'third.png' %>
+        <% else %>
+          <p><%= i %>位</p>
+        <% end %>
       <% else %>
-        <p><%= i %>位</p>
+          <p><%= 30*(params[:page]).to_i-30+i %>位</p>
       <% end %>
-    <% else %>
-        <p><%= 30*(params[:page]).to_i-30+i %>位</p>
-    <% end %>
-    </div>
-    <div class="col-md-4">
-      <% if user.avatar.url %>
-        <%= image_tag user.avatar.url, size: 50%>
-      <% else %>
-        <%= image_tag 'default_user.png', size: 50%>
-      <% end %>
-      <%= link_to user.name, user %>
-    </div>
+      </div>
+      <div class="col-md-3">
+        <% if user.avatar.url %>
+          <%= image_tag user.avatar.url, size: 50%>
+        <% else %>
+          <%= image_tag 'default_user.png', size: 50%>
+        <% end %>
+        <%= link_to user.name, user %>
+      </div>
+      <div class="col-md-4">
+        <% if user.tasks.to_a.map{ |task| task.set_number * task.task_time }.sum > 0 %>
+          <p>
+          <%= user.tasks.to_a.map{ |task| task.set_number * task.task_time }.sum/60 %> 時間
+          <%= ((user.tasks.to_a.map{ |task| task.set_number * task.task_time }.sum/60.to_f-user.tasks.to_a.map{ |task| task.set_number * task.task_time }.sum/60) * 60).round  %>分作業しました
+          </p>
+        <% else %>
+          <p>今日はまだ作業していません</p>
+        <% end %>
+      </div>
     <div class="col-md-4">
     <% unless current_user?(user) %>
         <% if current_user.following?(user) %>
