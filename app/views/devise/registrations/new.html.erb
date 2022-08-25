@@ -1,8 +1,9 @@
-
-<h1>Create account</h1>
-
+<div class="foo-font">
+  <h1>アカウント作成</h1>
+</div>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
+  <div class="foo-font">
   <div class="row">
   <div class="col-md-6 col-md-offset-3">
   <div class="field">
@@ -33,5 +34,6 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+</div>
 </div>
 </div>

@@ -1,6 +1,6 @@
 <% task_times = user.tasks.where(created_at: Time.zone.today.beginning_of_day..Time.zone.today.end_of_day).to_a.map { |task| task.set_number * task.task_time }.sum %>
 
-<li>
+<li class="foo-fonts">
   <%= gravatar_for user, size: 50 %>
   <%= link_to user.name, user%>
   <% if task_times > 0 %>
@@ -12,3 +12,4 @@
     <p>今日はまだ作業していません</p>
   <% end %>
 </li>
+
