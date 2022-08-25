@@ -1,27 +1,28 @@
-<div class="timer">
-  <div class="container">
-    <div class="row">
-      <div id="hour" class="col-md-2 num">00</div>
-      <div class="col-md-3 unit">:</div>
-      <div id="minute" class="col-md-2 num">00</div>
-      <div class="col-md-3 unit">:</div>
-      <div id="second" class="col-md-2 num">00</div>
-    </div>
+<div class="timer-container">
+  <div class="state-container">
+    <p id = "task-state"></p>
+  </div>
+  <div class="time-container">
+    <p class="time"><span id="hour"></span>hours</p>
+    <p class="time"><span id="minute"></span>minutes</p>
+    <p class="time"><span id="second"></span>seconds</p>
+  </div>
+  <div class="info-container">
+    <h1 id="task-name"><%= @task.name %></h1>
+    <h1 id="remaining-set-number">あと<%= @task.set_number %>セット</h1>
   </div>
 </div>
 
-<div id="button">
-  <%= link_to "完了", new_task_path %>
-</div>
+<%= link_to "完了", new_task_path, {id: "button", class: "btn btn-primary"} %>
 
 <script>
   const button           = document.getElementById("button");
-  const taskName         = document.getElementById("taskName");
-  var remainingSetNumber = document.getElementById("remaining_set_number");
+  const taskName         = document.getElementById("task-name");
+  var remainingSetNumber = document.getElementById("remaining-set-number");
   const hours            = document.getElementById("hour");                   //時を表示するエリアの変数
   const minutes          = document.getElementById("minute");                 //分を表示するエリアの変数
   const seconds          = document.getElementById("second");                 //秒を表示するエリアの変数
-  const taskState        = document.getElementById("task_state");             //タスク中か休憩中なのかを表示するエリアの変数
+  const taskState        = document.getElementById("task-state");             //タスク中か休憩中なのかを表示するエリアの変数
 
   const music = new Audio("<%= image_path("timer_sound.mp3") %>");     //通知音のセット
 
@@ -41,13 +42,14 @@
       await countDown(taskTime, "タスク中");  //タスク時間のカウントダウン
       
       if (setNumber == 1) {
-        remaining_set_number.innerHTML = 0;
+        remainingSetNumber.innerHTML = "あと0セット";
+        taskState.innerHTML = "終了";
         button.style.display = "block";
         break;
       }
-      await countDown(restTime, "休憩中");  //休憩時間のカウントダウン
+      await countDown(restTime, "休憩中。。。");  //休憩時間のカウントダウン
       setNumber--;
-      remaining_set_number.innerHTML = setNumber;
+      remainingSetNumber.innerHTML = "あと"+setNumber+"セット";
     }
   }
 
@@ -86,8 +88,6 @@
   function minus_check(time) {
     if (time <= 0) {
       hours.innerHTML,minutes.innerHTML,seconds.innerHTML = format(0);
-      music.pause();
-      music.currentTime = 0;
       clearInterval(tid);
     }
   }
