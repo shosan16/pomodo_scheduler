@@ -316,3 +316,58 @@ span.image {
     border: 0;
   }
 }
+
+//font
+@font-face {
+  font-family: "Smog";
+  src: asset-url('/fonts/Senobi-Gothic-Bold.ttf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+.foo-font  {
+  font-family: 'Smog';
+}
+.foo-font h1  {
+  font-family: 'Smog';
+}
+.foo-font h2  {
+  font-family: 'Smog';
+}
+
+//マイページ
+ol.tasks{
+  counter-reset:list;
+  list-style-type:none;
+  font-family: 'Smog';
+  padding:0;
+}
+ol.tasks li{
+  position:relative;
+  margin: 7px 0 7px 0px;
+  padding-left:40px;
+  font-weight: bold;
+  font-size:20px;
+  line-height: 30px;
+  border: 2px solid #756C67;
+  color: #756C67;
+}
+ol.tasks li:before{
+  counter-increment: list;
+  content: counter(list);
+  position: absolute;
+  left: 0px;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  color: #fff;
+  line-height:30px;
+  background: #756C67;
+  top: 50%;
+  -moz-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+
