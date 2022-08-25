@@ -13,6 +13,11 @@
       <section class="button">
       <%= render 'users/follow_form' if user_signed_in? %>
       </section>
+      <section>
+      <%= month_calendar do |date| %>
+          <%= link_to (date.day).to_s+"日", root_path(date: date) %>
+      <% end %>
+      </section>
     </aside>
     <div class="col-md-8">
       <% if @tasks.any? %>
