@@ -37,6 +37,10 @@ gem 'devise-i18n'
 
 #円グラフ
 gem "chartkick"
+
+#アイコン
+gem 'carrierwave', '~> 2.0'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
