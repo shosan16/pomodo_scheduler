@@ -23,14 +23,14 @@ class UsersController < ApplicationController
   def following
     @title = "フォロー中のユーザー"
     @user  = User.find(params[:id])
-    @users = @user.following.paginate(page: params[:page])
+    @users = @user.following.sort_by{|user| user.tasks.where(created_at: Time.zone.today.beginning_of_day..Time.zone.today.end_of_day).map{|task|task.task_time * task.set_number}.sum}.reverse.paginate(page: params[:page])
     render 'show_follow'
   end
 
   def followers
     @title = "フォロワー"
     @user  = User.find(params[:id])
-    @users = @user.followers.paginate(page: params[:page])
+    @users = @user.followers.sort_by{|user| user.tasks.where(created_at: Time.zone.today.beginning_of_day..Time.zone.today.end_of_day).map{|task|task.task_time * task.set_number}.sum}.reverse.paginate(page: params[:page])
     render 'show_follow'
   end
 
