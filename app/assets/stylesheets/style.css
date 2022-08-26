@@ -70,11 +70,7 @@
   box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  :root {
-    scroll-behavior: smooth;
-  }
-}
+
 
 body {
   margin: 0;
@@ -1719,36 +1715,7 @@ progress {
 
 
 
-@media (max-width: 575.98px) {
-  .table-responsive-sm {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-}
-@media (max-width: 767.98px) {
-  .table-responsive-md {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-}
-@media (max-width: 991.98px) {
-  .table-responsive-lg {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-}
-@media (max-width: 1199.98px) {
-  .table-responsive-xl {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-}
-@media (max-width: 1399.98px) {
-  .table-responsive-xxl {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-}
+
 
 
 .btn-check {
@@ -3074,16 +3041,7 @@ progress {
   transform: scale(1.02);
 }
 
-.modal-dialog-scrollable {
-  height: calc(100% - 1rem);
-}
-.modal-dialog-scrollable .modal-content {
-  max-height: 100%;
-  overflow: hidden;
-}
-.modal-dialog-scrollable .modal-body {
-  overflow-y: auto;
-}
+
 
 .modal-dialog-centered {
   display: flex;
@@ -3599,21 +3557,8 @@ progress {
   opacity: 1 !important;
 }
 
-.overflow-auto {
-  overflow: auto !important;
-}
 
-.overflow-hidden {
-  overflow: hidden !important;
-}
 
-.overflow-visible {
-  overflow: visible !important;
-}
-
-.overflow-scroll {
-  overflow: scroll !important;
-}
 
 .d-inline {
   display: inline !important;
@@ -6134,6 +6079,7 @@ progress {
     
 }
 
+
   .text-md-start {
     text-align: left !important;
   }
@@ -8141,10 +8087,7 @@ progress {
     display: none !important;
   }
 }
-html {
-  height: 100%;
-  scroll-padding-top: calc(4.5rem - 1px);
-}
+
 
 body {
   width: 100%;
@@ -8181,19 +8124,21 @@ header.masthead {
   background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../assets/img/bg-masthead.jpg");
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: scroll;
   background-size: cover;
 }
 
 @media (min-width: 992px) {
   header.masthead {
-    height: 100vh;
-    min-height: 40rem;
-    padding-top: 4.5rem;
-    padding-bottom: 0;
+    height: 600px;
   }
 
 }
 
+
+
+
+section {
+  overflow:hidden;
+}
 
 
