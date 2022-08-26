@@ -18,19 +18,19 @@
   <% @users.each.with_index(1) do |user,i| %>
     <li>
       <div class="col-md-1">
-      <% if (params[:page]).to_i <= 1 %>
-        <% if i == 1 %>
-          <%= image_tag 'first.png' %>
-        <% elsif i == 2 %>
-          <%= image_tag 'second.png' %>
-        <% elsif i == 3 %>
-          <%= image_tag 'third.png' %>
+        <% if (params[:page]).to_i <= 1 %>
+          <% if i == 1 %>
+            <%= image_tag 'first.png' %>
+          <% elsif i == 2 %>
+            <%= image_tag 'second.png' %>
+          <% elsif i == 3 %>
+            <%= image_tag 'third.png' %>
+          <% else %>
+            <p><%= i %>位</p>
+          <% end %>
         <% else %>
-          <p><%= i %>位</p>
+            <p><%= 30*(params[:page]).to_i-30+i %>位</p>
         <% end %>
-      <% else %>
-          <p><%= 30*(params[:page]).to_i-30+i %>位</p>
-      <% end %>
       </div>
       <div class="col-md-3">
         <% if user.avatar.url %>

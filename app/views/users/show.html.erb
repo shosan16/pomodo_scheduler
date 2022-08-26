@@ -25,10 +25,10 @@
   </aside>
   <div class="col-md-8">
     <% if @tasks.any? %>
-      <h2 class="m-5">今日のタスク</h2>
+      <h2 class="m-5">タスク一覧</h2>
       <%= render 'shared/show_tasks' %>
     <% else %>
-      <h2 class="m-5">今日はまだ作業していません</h2>
+      <h2 class="m-5">作業していません</h2>
     <% end %>
   </div>
 </div>
