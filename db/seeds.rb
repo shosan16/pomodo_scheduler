@@ -6,7 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-
 # ユーザーの一部を対象にタスクを生成する（昨日)
 # users = User.order(:id).take(20)
 # 1.times do
@@ -89,21 +88,27 @@
 # 今日やったタスク
 users = User.order(:id).take(30)
 1.times do
-  name = "レポート"
+  name = 'レポート'
   rest_time = 1
-  users.each { |user| user.tasks.create!(name: name, task_time: rand(10..15), rest_time: rest_time, set_number: rand(1..4)) }
+  users.each do |user|
+    user.tasks.create!(name: name, task_time: rand(10..15), rest_time: rest_time, set_number: rand(1..4))
+  end
 end
 
 users = User.order(:id).take(30)
 1.times do
-  name = "英語"
+  name = '英語'
   rest_time = 1
-  users.each { |user| user.tasks.create!(name: name, task_time: rand(10..15), rest_time: rest_time, set_number: rand(1..4)) }
+  users.each do |user|
+    user.tasks.create!(name: name, task_time: rand(10..15), rest_time: rest_time, set_number: rand(1..4))
+  end
 end
 
 users = User.order(:id).take(30)
 1.times do
-  name = "プログラミング"
+  name = 'プログラミング'
   rest_time = 1
-  users.each { |user| user.tasks.create!(name: name, task_time: rand(10..15), rest_time: rest_time, set_number: rand(1..4)) }
+  users.each do |user|
+    user.tasks.create!(name: name, task_time: rand(10..15), rest_time: rest_time, set_number: rand(1..4))
+  end
 end

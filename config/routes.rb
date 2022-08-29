@@ -9,9 +9,9 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
-  resources :relationships, only: [:create, :destroy]
+  resources :relationships, only: %i[create destroy]
   get 'home/index'
 
-  resources :tasks, only: [:new, :create]
-  get 'countdown', to:'tasks#countdown'
+  resources :tasks, only: %i[new create]
+  get 'countdown', to: 'tasks#countdown'
 end
