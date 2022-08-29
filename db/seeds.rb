@@ -57,34 +57,34 @@
 # end
 
 # 以下のリレーションシップを作成する
-users = User.all
-user  = users.first
-following = users[2..30]
-followers = users[3..20]
-following.each { |followed| user.follow(followed) }
-followers.each { |follower| follower.follow(user) }
+# users = User.all
+# user  = users.first
+# following = users[2..30]
+# followers = users[3..20]
+# following.each { |followed| user.follow(followed) }
+# followers.each { |follower| follower.follow(user) }
 
 # 過去にやったタスク8/1〜8/24
-users = User.order(:id).take(30)
-15.times do
-  name = "プログラミング"
-  rest_time = 1
-  users.each { |user| user.tasks.create!(name: name, task_time: rand(10..15), rest_time: rest_time, set_number: rand(1..4), created_at:Faker::Date.between(from: '2022-08-01', to: '2022-08-24')) }
-end
+# users = User.order(:id).take(30)
+# 15.times do
+#   name = "プログラミング"
+#   rest_time = 1
+#   users.each { |user| user.tasks.create!(name: name, task_time: rand(10..15), rest_time: rest_time, set_number: rand(1..4), created_at:Faker::Date.between(from: '2022-08-01', to: '2022-08-24')) }
+# end
 
-users = User.order(:id).take(30)
-15.times do
-  name = "英語"
-  rest_time = 1
-  users.each { |user| user.tasks.create!(name: name, task_time: rand(10..15), rest_time: rest_time, set_number: rand(1..4), created_at:Faker::Date.between(from: '2022-08-01', to: '2022-08-24')) }
-end
+# users = User.order(:id).take(30)
+# 15.times do
+#   name = "英語"
+#   rest_time = 1
+#   users.each { |user| user.tasks.create!(name: name, task_time: rand(10..15), rest_time: rest_time, set_number: rand(1..4), created_at:Faker::Date.between(from: '2022-08-01', to: '2022-08-24')) }
+# end
 
-users = User.order(:id).take(30)
-15.times do
-  name = "レポート"
-  rest_time = 1
-  users.each { |user| user.tasks.create!(name: name, task_time: rand(10..15), rest_time: rest_time, set_number: rand(1..4), created_at:Faker::Date.between(from: '2022-08-01', to: '2022-08-24')) }
-end
+# users = User.order(:id).take(30)
+# 15.times do
+#   name = "レポート"
+#   rest_time = 1
+#   users.each { |user| user.tasks.create!(name: name, task_time: rand(10..15), rest_time: rest_time, set_number: rand(1..4), created_at:Faker::Date.between(from: '2022-08-01', to: '2022-08-24')) }
+# end
 
 # 今日やったタスク
 users = User.order(:id).take(30)
@@ -107,9 +107,3 @@ users = User.order(:id).take(30)
   rest_time = 1
   users.each { |user| user.tasks.create!(name: name, task_time: rand(10..15), rest_time: rest_time, set_number: rand(1..4)) }
 end
-
-
-
-
-
-
