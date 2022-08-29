@@ -1,27 +1,27 @@
 <div class="foo-font">
-<% provide(:title, @title) %>
-<div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <% if @user.avatar.url %>
-        <%= image_tag @user.avatar.url, size: 50%>
-      <% else %>
-        <%= image_tag 'default_user.png', size: 50%>
+  <% provide(:title, @title) %>
+  <div class="row">
+    <aside class="col-md-4">
+      <section class="user_info">
+        <% if @user.avatar.url %>
+          <%= image_tag @user.avatar.url, size: 50%>
+        <% else %>
+          <%= image_tag 'default_user.png', size: 50%>
+        <% end %>
+        <h1><%= @user.name %></h1>
+      </section>
+      <section class="stats">
+        <%= render 'shared/stats' %>
+      </section>
+    </aside>
+    <div class="col-md-8 foo-font">
+      <h3><%= @title %></h3>
+      <% if @users.any? %>
+        <ul class="users follow">
+          <%= render @users %>
+        </ul>
+        <%= will_paginate %>
       <% end %>
-      <h1><%= @user.name %></h1>
-    </section>
-    <section class="stats">
-      <%= render 'shared/stats' %>
-    </section>
-  </aside>
-  <div class="col-md-8 foo-font">
-    <h3><%= @title %></h3>
-    <% if @users.any? %>
-      <ul class="users follow">
-        <%= render @users %>
-      </ul>
-      <%= will_paginate %>
-    <% end %>
+    </div>
   </div>
-</div>
 </div>

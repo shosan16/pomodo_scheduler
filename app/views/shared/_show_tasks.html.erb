@@ -1,20 +1,15 @@
 <% if @tasks %>
   <div class="m-5 foo-font">
     <%= pie_chart @tasks.to_a.group_by(&:name).map { |name, tasks| [name, tasks.map { |task| task.set_number * task.task_time }.sum]}%>
-  <div>
-<% end %>
-
-<div class="m-5 foo-font ">
-  <% @tasks.each do |task| %>
-    
-    <ol class="list-group list-group-numbered tasks">
-      <li class="list-group-item">タスク名：<%= task.name %></li>
-      <li class="list-group-item">タスク時間：<%= task.task_time %>分</li>
-      <li class="list-group-item">セット数：<%= task.set_number %>セット</li>
-      <li class="list-group-item">合計時間：<%= task.task_time * task.set_number %>分</li>
-    </ol>
-
-    
-
-  <% end %>
-</div>
+    <div>
+    <% end %>
+    <div class="m-5 foo-font ">
+      <% @tasks.each do |task| %>
+        <ol class="list-group list-group-numbered tasks">
+          <li class="list-group-item">タスク名：<%= task.name %></li>
+          <li class="list-group-item">タスク時間：<%= task.task_time %>分</li>
+          <li class="list-group-item">セット数：<%= task.set_number %>セット</li>
+          <li class="list-group-item">合計時間：<%= task.task_time * task.set_number %>分</li>
+        </ol>
+      <% end %>
+    </div>

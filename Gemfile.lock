@@ -102,7 +102,7 @@ GEM
       devise (>= 4.8.0)
     erubi (1.11.0)
     execjs (2.8.1)
-    faker (2.20.0)
+    faker (2.22.0)
       i18n (>= 1.8.11, < 2)
     ffi (1.15.5)
     globalid (1.0.0)
@@ -219,7 +219,7 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    ssrf_filter (1.0.8)
+    ssrf_filter (1.1.0)
     thor (1.2.1)
     thread_safe (0.3.6)
     tilt (2.0.11)
@@ -257,15 +257,15 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap (>= 1.4.2)
-  bootstrap-sass (= 3.4.1)
-  bootstrap-will_paginate (= 1.0.0)
+  bootstrap-sass
+  bootstrap-will_paginate
   byebug
   capybara (>= 2.15)
   carrierwave (~> 2.0)
   chartkick
   devise
   devise-i18n
-  faker (= 2.20.0)
+  faker
   jbuilder (~> 2.7)
   listen (~> 3.2)
   mini_magick
@@ -284,7 +284,7 @@ DEPENDENCIES
   web-console (>= 3.3.0)
   webdrivers
   webpacker (~> 5.0)
-  will_paginate (= 3.3.1)
+  will_paginate
 
 RUBY VERSION
    ruby 2.6.9p207

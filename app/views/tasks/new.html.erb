@@ -1,22 +1,17 @@
 <div class="foo-font">
-<h1>ポモタイマー</h1>
+  <h1>ポモタイマー</h1>
 </div>
-
 <div class="row foo-font">
   <div class="col-md-6 col-md-offset-3">
     <%= form_with(model: @task, scope: @task, local: true) do |f| %>
       <%= f.label :name, "1.タスク名" %>
       <%= f.text_field :name %>
-
       <%= f.label :task_time, "2.タスク時間(分)" %>
       <%= f.number_field :task_time, step: "1",  min: 1, max: 60 %>
-
       <%= f.label :rest_time, "3.休憩時間(分)" %>
       <%= f.number_field :rest_time, step: "1" , min: 1, max: 60%>
-
       <%= f.label :set_number, "4.セット数（回）" %>
       <%= f.number_field :set_number, step: "1" , min: 1, max: 10%>
-
       <%= f.submit "Pomo Strat", class: "btn btn-primary" %>
     <% end %>
   </div>

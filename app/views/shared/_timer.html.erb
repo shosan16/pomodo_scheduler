@@ -1,115 +1,113 @@
 <div class ="foo-font">
-<div class="timer-container">
-  <div class="state-container">
-    <p id = "task-state"></p>
+  <div class="timer-container">
+    <div class="state-container">
+      <p id = "task-state"></p>
+    </div>
+    <div class="time-container">
+      <p class="time"><span id="hour"></span>hours</p>
+      <p class="time"><span id="minute"></span>minutes</p>
+      <p class="time"><span id="second"></span>seconds</p>
+    </div>
+    <div class="info-container">
+      <h1 id="task-name"><%= @task.name %></h1>
+      <h1 id="remaining-set-number">あと<%= @task.set_number %>セット</h1>
+    </div>
   </div>
-  <div class="time-container">
-    <p class="time"><span id="hour"></span>hours</p>
-    <p class="time"><span id="minute"></span>minutes</p>
-    <p class="time"><span id="second"></span>seconds</p>
-  </div>
-  <div class="info-container">
-    <h1 id="task-name"><%= @task.name %></h1>
-    <h1 id="remaining-set-number">あと<%= @task.set_number %>セット</h1>
-  </div>
-</div>
+  <%= link_to "完了", new_task_path, {id: "button", class: "btn btn-primary"} %>
+  <script>
+    const button           = document.getElementById("button");
+    const taskName         = document.getElementById("task-name");
+    var remainingSetNumber = document.getElementById("remaining-set-number");
+    const hours            = document.getElementById("hour");                   //時を表示するエリアの変数
+    const minutes          = document.getElementById("minute");                 //分を表示するエリアの変数
+    const seconds          = document.getElementById("second");                 //秒を表示するエリアの変数
+    const taskState        = document.getElementById("task-state");             //タスク中か休憩中なのかを表示するエリアの変数
 
-<%= link_to "完了", new_task_path, {id: "button", class: "btn btn-primary"} %>
+    const music = new Audio("<%= image_path("timer_sound.mp3") %>");     //通知音のセット
 
-<script>
-  const button           = document.getElementById("button");
-  const taskName         = document.getElementById("task-name");
-  var remainingSetNumber = document.getElementById("remaining-set-number");
-  const hours            = document.getElementById("hour");                   //時を表示するエリアの変数
-  const minutes          = document.getElementById("minute");                 //分を表示するエリアの変数
-  const seconds          = document.getElementById("second");                 //秒を表示するエリアの変数
-  const taskState        = document.getElementById("task-state");             //タスク中か休憩中なのかを表示するエリアの変数
+    var setNumber = <%= @task.set_number %>;
+    var taskTime  = <%= @task.task_time %>;
+    var restTime  = <%= @task.rest_time %>;
 
-  const music = new Audio("<%= image_path("timer_sound.mp3") %>");     //通知音のセット
+    var tid;
+    var startTime;
+    var finishTime;   //タスクのカウントダウンを始める度に再代入
 
-  var setNumber = <%= @task.set_number %>;
-  var taskTime  = <%= @task.task_time %>;
-  var restTime  = <%= @task.rest_time %>;
+    const _sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));   //並行処理をさせないためのおまじない
 
-  var tid;
-  var startTime;
-  var finishTime;   //タスクのカウントダウンを始める度に再代入
+    async function startTasks() {
 
-  const _sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));   //並行処理をさせないためのおまじない
+      while(setNumber > 0) {                   //セット数分繰り返す
+        await countDown(taskTime, "タスク中");  //タスク時間のカウントダウン
 
-  async function startTasks() {
-    
-    while(setNumber > 0) {                   //セット数分繰り返す
-      await countDown(taskTime, "タスク中");  //タスク時間のカウントダウン
-      
-      if (setNumber == 1) {
-        remainingSetNumber.innerHTML = "あと0セット";
-        taskState.innerHTML = "終了";
-        button.style.display = "block";
-        break;
+        if (setNumber == 1) {
+          remainingSetNumber.innerHTML = "あと0セット";
+          taskState.innerHTML = "終了";
+          button.style.display = "block";
+          break;
+        }
+        await countDown(restTime, "休憩中。。。");  //休憩時間のカウントダウン
+        setNumber--;
+        remainingSetNumber.innerHTML = "あと"+setNumber+"セット";
       }
-      await countDown(restTime, "休憩中。。。");  //休憩時間のカウントダウン
-      setNumber--;
-      remainingSetNumber.innerHTML = "あと"+setNumber+"セット";
     }
-  }
 
-  function countDown(time, state) {
-    setTimer(time);
-    taskState.innerHTML = state;
-    tid = setInterval(function(){       //10ミリ秒の間隔でdisplayメソッドを繰り返す
-                              display();
-                            }, 1);
-    return _sleep(time*60*1000);
-  }
-
-  function setTimer(time) {
-    startTime  = new Date();
-    finishTime = startTime.setMinutes(startTime.getMinutes() + time);
-  }
-
-  function display() {
-    const now = new Date();
-    let diff_sec = Math.floor((finishTime - now)/1000);
-    five_seconds_ago(diff_sec);
-    minus_check(diff_sec);
-    
-    hour = Math.floor(diff_sec / 3600);
-    diff_sec -= hour * 3600;
-    hours.innerHTML = format(hour);
-
-    minute = Math.floor(diff_sec / 60);
-    diff_sec -= minute * 60;
-    minutes.innerHTML = format(minute);
-
-    second = Math.floor(diff_sec);
-    seconds.innerHTML = format(second);
-  }
-
-  function minus_check(time) {
-    if (time <= 0) {
-      hours.innerHTML,minutes.innerHTML,seconds.innerHTML = format(0);
-      clearInterval(tid);
+    function countDown(time, state) {
+      setTimer(time);
+      taskState.innerHTML = state;
+      tid = setInterval(function(){       //10ミリ秒の間隔でdisplayメソッドを繰り返す
+                                display();
+                              }, 1);
+      return _sleep(time*60*1000);
     }
-  }
 
-  function five_seconds_ago(time) {
-    if (time <= 4) {
-      music.play();
+    function setTimer(time) {
+      startTime  = new Date();
+      finishTime = startTime.setMinutes(startTime.getMinutes() + time);
     }
-  }
 
-  function format(time) {
-    let display_num;
-    
-    if (time < 10) {
-      display_num = "0"+time;
-    } else {
-      display_num = time;
+    function display() {
+      const now = new Date();
+      let diff_sec = Math.floor((finishTime - now)/1000);
+      five_seconds_ago(diff_sec);
+      minus_check(diff_sec);
+
+      hour = Math.floor(diff_sec / 3600);
+      diff_sec -= hour * 3600;
+      hours.innerHTML = format(hour);
+
+      minute = Math.floor(diff_sec / 60);
+      diff_sec -= minute * 60;
+      minutes.innerHTML = format(minute);
+
+      second = Math.floor(diff_sec);
+      seconds.innerHTML = format(second);
     }
-    return display_num;
-  }
 
-  window.addEventListener('load', startTasks);
-</script>
+    function minus_check(time) {
+      if (time <= 0) {
+        hours.innerHTML,minutes.innerHTML,seconds.innerHTML = format(0);
+        clearInterval(tid);
+      }
+    }
+
+    function five_seconds_ago(time) {
+      if (time <= 4) {
+        music.play();
+      }
+    }
+
+    function format(time) {
+      let display_num;
+
+      if (time < 10) {
+        display_num = "0"+time;
+      } else {
+        display_num = time;
+      }
+      return display_num;
+    }
+
+    window.addEventListener('load', startTasks);
+  </script>
 </div>

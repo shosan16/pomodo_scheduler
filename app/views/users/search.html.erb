@@ -1,10 +1,9 @@
 <% provide(:title, 'Search') %>
 <div class="foo-font">
-<h1>検索結果</h1>
-
-<ul class="users">
+  <h1>検索結果</h1>
+  <ul class="users">
     <% @results.each do |user| %>
-        <li>
+      <li>
         <div class="col-md-4">
           <% if user.avatar.url %>
             <%= image_tag user.avatar.url, size: 50%>
@@ -14,23 +13,23 @@
           <%= link_to user.name, user %>
         </div>
         <div class="col-md-4">
-        <% unless current_user?(user) %>
+          <% unless current_user?(user) %>
             <% if current_user.following?(user) %>
               <%= form_with(model: current_user.active_relationships.find_by(followed_id: user.id),
                             html: { method: :delete }, local: true) do |f| %>
-              <%= f.submit "フォロー解除", class: "btn btn-secondary" %>
+                <%= f.submit "フォロー解除", class: "btn btn-secondary" %>
               <% end %>
             <% else %>
-            <%= form_with(model: current_user.active_relationships.build, local: true) do |f| %>
-                    <div><%= hidden_field_tag :followed_id, user.id %></div>
-                    <%= f.submit "フォロー", class: "btn btn-primary" %>
+              <%= form_with(model: current_user.active_relationships.build, local: true) do |f| %>
+                <div><%= hidden_field_tag :followed_id, user.id %></div>
+                <%= f.submit "フォロー", class: "btn btn-primary" %>
               <% end %>
             <% end %>
-        </div>
-          <% end %>
-        </li>
-      <% end %>
-</ul>
-<p></p>
-<%= link_to '戻る', users_path %>
+          </div>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+  <p></p>
+  <%= link_to '戻る', users_path %>
 </div>

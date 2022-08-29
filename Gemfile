@@ -6,11 +6,27 @@ ruby '2.6.9'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.0.5'
 
-gem 'bootstrap-sass', '3.4.1'
-gem 'bootstrap-will_paginate', '1.0.0'
-gem 'faker',                   '2.20.0'
+gem 'bootstrap-sass'
+gem 'bootstrap-will_paginate'
+gem 'faker'
 gem 'ransack'
-gem 'will_paginate', '3.3.1'
+gem 'will_paginate'
+
+# ログイン機能
+gem 'devise'
+# 多言語対応
+gem 'devise-i18n'
+gem 'rails-i18n', '~> 6.0'
+
+# カレンダー機能
+gem 'simple_calendar', '~> 2.0'
+
+# 円グラフ
+gem 'chartkick'
+
+# アイコン
+gem 'carrierwave', '~> 2.0'
+gem 'mini_magick'
 
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
@@ -28,21 +44,6 @@ gem 'jbuilder', '~> 2.7'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
-# ログイン機能
-gem 'devise'
-# 多言語対応
-gem 'devise-i18n'
-gem 'rails-i18n', '~> 6.0'
-# カレンダー機能
-gem 'simple_calendar', '~> 2.0'
-
-# 円グラフ
-gem 'chartkick'
-
-# アイコン
-gem 'carrierwave', '~> 2.0'
-gem 'mini_magick'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

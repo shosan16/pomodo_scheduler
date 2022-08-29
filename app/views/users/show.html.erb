@@ -15,11 +15,11 @@
       <%= render 'shared/stats' %>
     </section>
     <section class="button">
-    <%= render 'follow_form' if user_signed_in? %>
+      <%= render 'follow_form' if user_signed_in? %>
     </section>
     <section class="calendar">
       <%= month_calendar do |date| %>
-          <%= link_to (date.day).to_s+"日", user_path(date: date) %>
+        <%= link_to (date.day).to_s+"日", user_path(date: date) %>
       <% end %>
     </section>
   </aside>
