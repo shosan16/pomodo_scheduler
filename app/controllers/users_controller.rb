@@ -19,9 +19,6 @@ class UsersController < ApplicationController
         task.task_time * task.set_number
       end.sum
     end.reverse.paginate(page: params[:page])
-
-    # where(created_at: Time.zone.today.beginning_of_day..Time.zone.today.end_of_day)
-    # task.task_time * task.set_number
   end
 
   def following
