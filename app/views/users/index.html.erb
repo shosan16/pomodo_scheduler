@@ -38,11 +38,10 @@
         <%= link_to user.name, user %>
       </div>
       <div class="col-md-4">
-        <% total_task_time = user.tasks.where(created_at: Time.zone.today.beginning_of_day..Time.zone.today.end_of_day).to_a.map{ |task| task.set_number * task.task_time }.sum %>
-        <% if total_task_time > 0 %>
+        <% if user.total_task_time > 0 %>
           <p>
-            <%= total_task_time/60 %> 時間
-            <%= ((total_task_time/60.to_f-total_task_time/60) * 60).round  %>分作業しました
+            <%= user.task_hours %> 時間
+            <%= user.task_minutes %>分作業しました
           </p>
         <% else %>
           <p>今日はまだ作業していません</p>
