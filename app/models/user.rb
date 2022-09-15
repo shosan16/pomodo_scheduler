@@ -14,18 +14,29 @@ class User < ApplicationRecord
   has_many :tasks, dependent: :destroy
   mount_uploader :avatar, AvatarUploader
 
-  # ユーザーをフォローする
   def follow(other_user)
     following << other_user
   end
 
-  # ユーザーをフォロー解除する
   def unfollow(other_user)
     active_relationships.find_by(followed_id: other_user.id).destroy
   end
 
-  # 現在のユーザーがフォローしてたらtrueを返す
   def following?(other_user)
     following.include?(other_user)
+  end
+
+  def total_task_time
+    tasks.where(created_at: Time.zone.today.beginning_of_day..Time.zone.today.end_of_day).to_a.map do |task|
+      task.set_number * task.task_time
+    end.sum
+  end
+
+  def task_hours
+    total_task_time / 60
+  end
+
+  def task_minutes
+    ((total_task_time / 60.to_f - total_task_time / 60) * 60).round
   end
 end
