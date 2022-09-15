@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'static_pages#home'
+
   devise_for :users
   resources :users do
     member do
@@ -9,8 +10,8 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
+
   resources :relationships, only: %i[create destroy]
-  get 'home/index'
 
   resources :tasks, only: %i[new create]
   get 'countdown', to: 'tasks#countdown'
