@@ -1,24 +1,77 @@
-# README
+## アプリ名：　ポモドスケジューラー
+https://pomodo-scheduler.herokuapp.com/
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+ポモドーロテクニックとタスク記録機能を組み合わせたタスク管理アプリです。  
+ポモドーロテクニックで時間を有効活用しつつ、実行したタスクをマイページから確認できます。
 
-Things you may want to cover:
+## 実装した機能一覧
+* 認証機能
+* タスク設定機能
+* カウントダウンタイマー
+* タスク振り返り機能
+* ランキングページ
+* ユーザー検索機能
+* フォロー機能
 
-* Ruby version
 
-* System dependencies
+## ログインページ
+* 新規作成ボタンからアカウントを作成
+* アカウントがある場合は右上のログインボタンからログイン
+* ログイン後はマイページにリダイレクト
 
-* Configuration
+![ログイン](https://user-images.githubusercontent.com/91502225/191266390-6df9aaa4-96fa-4ce7-9e07-05995ddbc15e.gif)
 
-* Database creation
 
-* Database initialization
+## タイマー機能
+ヘッダーの「タイマー」をクリックすると、タスク入力ページへ遷移します。
+* タスク名、タスク時間、休憩時間、セット数（タスク時間と休憩時間を何回繰り返すか）を入力
+* スタートボタンを押すとタスク時間のカウントダウン開始
 
-* How to run the test suite
+![タスク設定](https://user-images.githubusercontent.com/91502225/191267333-2f11d204-0300-4664-bece-b0b4135e560f.gif)
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+* タスク時間のカウントダウンが終了したらアラームが鳴り、続けて休憩時間のカウントダウン開始
+* セット数分のタスクが終わったら完了ボタンが表示され、完了ボタンを押すと、タスク設定ページに戻る
 
-* ...
+![タスク設定→終了](https://user-images.githubusercontent.com/91502225/191267619-8b5ea614-c12c-49b0-86b5-365647cb3236.gif)
+
+
+## マイページ
+「POMODO SCHEDULER」をクリックするとマイページへ遷移します。
+
+* マイページでは自分が実行したタスクが一覧で表示
+* タスク名ごとに合計した時間の割合を円グラフで確認できる
+* カレンダーで過去の日にちをクリックすると、選択した日にちのタスクを見返すことができる
+
+![マイページ](https://user-images.githubusercontent.com/91502225/191267838-c1f7ff16-85ce-4f57-962f-01935e513e9d.gif)
+
+## ユーザー検索 & ランキングページ
+「ユーザー検索」をクリックすると、ユーザー検索ページに遷移します。
+
+* ユーザー名を入力して検索することで、ユーザーを絞り込める
+* ランキングページも兼ねているため、全ユーザーのランキングと作業量を確認できる
+* フォローボタンを押すと、ユーザーをフォローできる
+
+![ユーザー検索](https://user-images.githubusercontent.com/91502225/191270301-5c274003-0a50-47ac-afc6-f127489dc98d.gif)
+
+
+* ユーザー名をクリックすることで、そのユーザーのタスク詳細ページに飛べる
+
+![検索ユーザー詳細](https://user-images.githubusercontent.com/91502225/191268666-b75d2674-df71-4383-b342-5c23e7268797.gif)
+
+## フォロー機能
+マイページの「フォロー」ボタンをクリックすると、フォロー中のユーザー一覧ページへ遷移します。
+「フォロワー」ボタンをクリックすると、フォロワー一覧ページへ遷移します。
+
+
+* フォローしているのユーザーの1日の作業量を確認できる
+* フォロワーの作業量を確認できる
+
+![フォロー一覧](https://user-images.githubusercontent.com/91502225/191269331-14c715c3-e950-4f8f-b239-eee1a37c4948.gif)
+
+* ユーザー名をクリックすることで、そのユーザーのタスク詳細を確認できる
+
+![フォロワー詳細](https://user-images.githubusercontent.com/91502225/191269413-cb933c4d-8f89-4479-91ae-b1bc20d551ca.gif)
+
+
+
