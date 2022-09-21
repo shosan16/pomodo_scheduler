@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
+  post '/static_pages/guest_sign_in', to: 'static_pages#guest_sign_in'
 
   resources :relationships, only: %i[create destroy]
 
