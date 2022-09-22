@@ -81,8 +81,8 @@ p {
 .navbar-inverse {
     background-color: #FDA856;
     border-color: #FDA856;
-    
-      
+
+
     }
 .navbar-inverse .navbar-nav > li > a {
   color: #F5EAD5;
@@ -205,10 +205,9 @@ aside {
 
 /* forms */
 
-input, textarea, select, .uneditable-input {
+input, textarea, select, .uneditable-input, .btn {
   border: 1px solid #bbb;
   width: 100%;
-  margin-bottom: 15px;
   @include box_sizing;
 }
 
@@ -232,6 +231,7 @@ input {
 }
 
 
+
 .checkbox {
   margin-top: -10px;
   margin-bottom: 10px;
@@ -248,10 +248,12 @@ input {
 }
 
 .field{
-  margin-bottom: 15px;
+  margin-bottom: 1rem;
 }
 
-
+.actions{
+  margin-bottom: 1rem;
+}
 /* Users index */
 
 .users {
@@ -376,4 +378,3 @@ ol.tasks li:before{
 .ma {
   margin-top :100px;
 }
-
