@@ -194,7 +194,7 @@ pre {
   margin-top: 0;
   margin-bottom: 1rem;
   overflow: auto;
-  
+
 }
 pre code {
   color: inherit;
@@ -5703,7 +5703,7 @@ progress {
     margin: 1.5rem !important;
   }
 
- 
+
   .m-md-5 {
     margin: 3rem !important;
   }
@@ -6076,7 +6076,7 @@ progress {
 
   .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
     background-color: #FDA856;
-    
+
 }
 
 
@@ -8106,9 +8106,9 @@ body {
 
 hr.divider {
   height: 0.2rem;
-  max-width: 3.25rem;
+  max-width: 100%;
   margin: 1.5rem auto;
-  background-color: #f4623a;
+  background-color: #9EA5A8;
   opacity: 1;
 }
 
@@ -8140,5 +8140,3 @@ header.masthead {
 section {
   overflow:hidden;
 }
-
-

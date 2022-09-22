@@ -3,7 +3,7 @@
 </div>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
-  <div class="foo-font">
+  <div class="foo-font container">
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
         <div class="field">
@@ -29,11 +29,15 @@
           <%= f.label :avatar, '5.アイコン' %>
           <%= f.file_field :avatar %>
         </div>
-        <div class="actions">
+        <div class="field">
           <%= f.submit t('.sign_up'), class: "btn btn-primary" %>
         </div>
-      <% end %>
-      <%= render "devise/shared/links" %>
+        <hr class="divider" />
+        <div class = "field">
+          <%= link_to 'ゲストログイン（閲覧用)', static_pages_guest_sign_in_path, method: :post , class: "btn btn-warning"%>
+        </div>
+        <%= link_to "ログイン", new_session_path(resource_name) %>
+      </div>
     </div>
   </div>
-</div>
+<% end %>
