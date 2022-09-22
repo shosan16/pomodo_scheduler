@@ -34,11 +34,9 @@
         </div>
         <hr class="divider" />
         <div class = "field">
-          <%= link_to "ログイン", new_session_path(resource_name) %>
-        </div>
-        <div class = "field">
           <%= link_to 'ゲストログイン（閲覧用)', static_pages_guest_sign_in_path, method: :post , class: "btn btn-warning"%>
         </div>
+        <%= link_to "ログイン", new_session_path(resource_name) %>
       </div>
     </div>
   </div>
