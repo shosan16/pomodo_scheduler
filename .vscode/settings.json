@@ -21,5 +21,8 @@
   "editor.formatOnPaste": true,
   "[erb]": {
     "editor.defaultFormatter": "aliariff.vscode-erb-beautify"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }
