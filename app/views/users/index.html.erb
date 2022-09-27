@@ -1,35 +1,27 @@
 <% provide(:title, 'All users') %>
 <div class="foo-font">
-  <h1>ユーザー検索</h1>
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3">
+  <h1>ランキング</h1>
+  <div class="row justify-content-center">
+    <div class="col-6 mb-5">
       <%= search_form_for @q, url: search_users_path do |f| %>
-        <%= f.label :name_cont, 'ユーザー名' %>
-        <%= f.search_field :name_cont %>
-        <%= f.submit '検索', class: "btn btn-primary" %>
+        <%= f.label :name_cont, 'ユーザー検索', class:"mb-3"%>
+        <%= f.search_field :name_cont, class:"mb-3"%>
+        <%= f.submit '検索', class: "btn btn-primary " %>
       <% end %>
     </div>
   </div>
 </div>
 <ul class="users foo-font">
   <% @users.each.with_index(1) do |user,i| %>
-    <li>
-      <div class="col-md-1">
+    <li class="row align-items-center">
+      <div class="col-1">
         <% if (params[:page]).to_i <= 1 %>
-          <% if i == 1 %>
-            <%= image_tag 'first.png' %>
-          <% elsif i == 2 %>
-            <%= image_tag 'second.png' %>
-          <% elsif i == 3 %>
-            <%= image_tag 'third.png' %>
-          <% else %>
-            <p><%= i %>位</p>
-          <% end %>
+          <p><%= i %>位</p>
         <% else %>
           <p><%= 30*(params[:page]).to_i-30+i %>位</p>
         <% end %>
       </div>
-      <div class="col-md-3">
+      <div class="col-3">
         <% if user.avatar.url %>
           <%= image_tag user.avatar.url, size: 50%>
         <% else %>
@@ -37,7 +29,7 @@
         <% end %>
         <%= link_to user.name, user %>
       </div>
-      <div class="col-md-4">
+      <div class="col-5">
         <% if user.total_task_time > 0 %>
           <p>
             <%= user.task_hours %> 時間
@@ -47,7 +39,7 @@
           <p>今日はまだ作業していません</p>
         <% end %>
       </div>
-      <div class="col-md-4">
+      <div class="col-3">
         <% unless current_user?(user) %>
           <% if current_user.following?(user) %>
             <%= form_with(model: current_user.active_relationships.find_by(followed_id: user.id),
