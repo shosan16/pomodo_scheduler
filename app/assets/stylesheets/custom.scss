@@ -376,3 +376,29 @@ ol.tasks li:before {
 .ma {
   margin-top: 100px;
 }
+
+//カレンダー
+.simple-calendar {
+  .day {
+    height: 40px;
+  }
+  .calendar-heading {
+    text-align: justify;
+    text-justify: distribute-all-lines;
+    li {
+      float: left;
+      list-style: none;
+      margin: 10px 30px;
+    }
+  }
+  .table > tbody > tr > td {
+    padding: 5px 1px;
+    vertical-align: middle;
+    text-align: center;
+  }
+  .table > tbody > tr > th {
+    padding: 5px 1px;
+    vertical-align: middle;
+    text-align: center;
+  }
+}

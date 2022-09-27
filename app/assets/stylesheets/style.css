@@ -1661,10 +1661,12 @@ progress {
   box-shadow: inset 0 0 0 9999px var(--bs-table-accent-bg);
 }
 .table > tbody {
-  vertical-align: inherit;
+  vertical-align: middle;
+  text-align: center;
 }
 .table > thead {
-  vertical-align: bottom;
+  vertical-align: middle;
+  text-align: center;
 }
 .table > :not(:first-child) {
   border-top: 2px solid currentColor;
@@ -2347,8 +2349,8 @@ progress {
 
 .btn-lg,
 .btn-group-lg > .btn {
-  padding: 0.5rem 1rem;
-  font-size: 1.25rem;
+  padding: 1.3rem 1rem;
+  font-size: 2rem;
   border-radius: 0.3rem;
 }
 
